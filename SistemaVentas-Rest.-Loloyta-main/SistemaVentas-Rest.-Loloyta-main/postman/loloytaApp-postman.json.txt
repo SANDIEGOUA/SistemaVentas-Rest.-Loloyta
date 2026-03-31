@@ -1,0 +1,188 @@
+{
+  "info": {
+    "name": "loloytaApp API",
+    "_postman_id": "12345-abcde-67890",
+    "description": "Colección de endpoints del sistema LoloytaApp",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+
+    {
+      "name": " Carta - Obtener disponibles",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/admin/carta/disponibles",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["admin", "carta", "disponibles"]
+        }
+      }
+    },
+
+    {
+      "name": " Carta - Crear item",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/x-www-form-urlencoded" }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            { "key": "nombre", "value": "Pizza", "type": "text" },
+            { "key": "precio", "value": "25.50", "type": "text" },
+            { "key": "disponible", "value": "true", "type": "text" }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8080/admin/carta",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["admin", "carta"]
+        }
+      }
+    },
+
+    {
+      "name": " Carta - Cambiar disponibilidad",
+      "request": {
+        "method": "POST",
+        "url": {
+          "raw": "http://localhost:8080/admin/carta/toggle/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["admin", "carta", "toggle", "1"]
+        }
+      }
+    },
+
+    {
+      "name": " Carta - Eliminar",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/admin/carta/eliminar/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["admin", "carta", "eliminar", "1"]
+        }
+      }
+    },
+
+    {
+      "name": "Cocina - Listar pedidos por mesa",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/mesa/1/pedidos",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["mesa", "1", "pedidos"]
+        }
+      }
+    },
+
+    {
+      "name": " Cocina - Actualizar estado pedido",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"activo\": false\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/cocina/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["cocina", "1"]
+        }
+      }
+    },
+
+    {
+      "name": " Cocina - Vaciar pedidos mesa",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "1"
+        },
+        "url": {
+          "raw": "http://localhost:8080/mesa/vaciarPedidos",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["mesa", "vaciarPedidos"]
+        }
+      }
+    },
+
+    {
+      "name": " Ventas - Registrar ventas",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "[\n  {\n    \"nombreProducto\": \"Pizza\",\n    \"precio\": 30.00\n  }\n]"
+        },
+        "url": {
+          "raw": "http://localhost:8080/ventas/registrar",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["ventas", "registrar"]
+        }
+      }
+    },
+
+    {
+      "name": " Reporte - Generar PDF",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/report/ventas",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["report", "ventas"]
+        }
+      }
+    },
+
+    {
+      "name": " Reporte - Filtrar por fechas",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/report/ventas?desde=2025-01-01&hasta=2025-12-31",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["report", "ventas"],
+          "query": [
+            { "key": "desde", "value": "2025-01-01" },
+            { "key": "hasta", "value": "2025-12-31" }
+          ]
+        }
+      }
+    }
+
+  ]
+}
